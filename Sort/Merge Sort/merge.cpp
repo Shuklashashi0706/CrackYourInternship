@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
 
 // Function prototypes
 void mergeSort(vector<int> &vec, int low, int high);
@@ -28,7 +30,10 @@ int main()
     // Perform merge sort on the vector
     int low = 0;
     int high = array.size() - 1;
+    auto start = high_resolution_clock::now();
     mergeSort(array, low, high);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(stop - start);
 
     // Display the sorted array
     cout << "The sorted array is:" << endl;
@@ -36,6 +41,7 @@ int main()
     {
         cout << array[i] << "\t";
     }
+    cout << "\nExecution time: " << duration.count() << " milliseconds" << endl;
     cout << endl;
 
     return 0;
