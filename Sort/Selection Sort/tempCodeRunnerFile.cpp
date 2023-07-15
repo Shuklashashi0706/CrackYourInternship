@@ -1,1 +1,0 @@
-cout << "\nExecution time: " << duration.count() << " milliseconds" << endl;
