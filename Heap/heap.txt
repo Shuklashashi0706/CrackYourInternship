@@ -1,0 +1,10 @@
+Summary:
+
+The class heap contains functions for insertion (insert) and deletion (delet) from a max-heap, as well as a function to print the elements of the heap. The time complexity for both insertion and deletion is O(log N), and for printing, it is O(N), where N is the number of elements in the heap.
+
+The heapify function is used to maintain the max-heap property during insertion and deletion operations. It has a time complexity of O(log N), where N is the number of elements in the heap.
+
+The heapSort function implements the Heap Sort algorithm to sort an array in ascending order using a max-heap. The time complexity for the heap sort is O(N log N), where N is the number of elements in the array.
+
+The main function demonstrates the usage of the heap class and the heapify and heapSort functions. It also shows examples of using the priority_queue container in C++ to create a max-heap and a min-heap. The time complexity of the operations using priority_queue depends on the underlying data structure
+ used, but typically, insertion, deletion, and accessing the top element have a time complexity of O(log N), where N is the number of elements in the heap.
