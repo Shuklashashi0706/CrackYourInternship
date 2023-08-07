@@ -36,32 +36,33 @@ public:
     {
         if (size == 0)
         {
+            cout << "Nothing is there" << endl;
             return;
         }
-
-        // Step:1 swap parent node with last node
-        swap(arr[1], arr[size]);
-        // Step:2 delete last node
-        size--;
-        // Step:3 compare parent node with its child and swap
-        int i = 1;
-        while (i < size)
+        else
         {
-            int leftIndex = 2 * i;
-            int rightIndex = (2 * i) + 1;
-            if (leftIndex < size && arr[i] < arr[leftIndex])
+            swap(arr[size], arr[1]); // Move the last element to the root (max element to the top).
+            size--;                  // Reduce the size to exclude the last element (previously the max element).
+            int i = 1;
+            while (i <= size)
             {
-                swap(arr[i], arr[leftIndex]);
-                i = leftIndex;
-            }
-            else if (rightIndex < size && arr[i] < arr[rightIndex])
-            {
-                swap(arr[i], arr[rightIndex]);
-                i = rightIndex;
-            }
-            else
-            {
-                return;
+                int leftIndex = (2 * i);
+                int rightIndex = (2 * i) + 1;
+                int maxChild = i; // Assume the current node is the maximum.
+
+                // Find the maximum among the parent, left child, and right child.
+                if (leftIndex <= size && arr[leftIndex] > arr[maxChild])
+                    maxChild = leftIndex;
+                if (rightIndex <= size && arr[rightIndex] > arr[maxChild])
+                    maxChild = rightIndex;
+
+                if (maxChild != i)
+                {
+                    swap(arr[i], arr[maxChild]); // Swap with the maximum child.
+                    i = maxChild;                // Update the index to move down the heap.
+                }
+                else
+                    return;
             }
         }
     }
@@ -165,7 +166,7 @@ int main()
     }
     cout << endl;
 
-    //min-heap
+    // min-heap
     priority_queue<int, vector<int>, greater<int>> minheap;
     minheap.push(1);
     minheap.push(5);
