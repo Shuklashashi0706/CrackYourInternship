@@ -52,9 +52,7 @@ void insertion(int arr[], int n)
         {
 
             // Swap the elements
-            temp = arr[j - 1];
-            arr[j - 1] = arr[j];
-            arr[j] = temp;
+            swap(arr[j],arr[j-1]);
 
             j--; // Move to the left
         }
