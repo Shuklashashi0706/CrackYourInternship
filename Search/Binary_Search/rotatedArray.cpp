@@ -1,22 +1,26 @@
 #include <iostream>
 #include<vector>
 using namespace std;
-void rotate(vector<int>&arr){
-    int temp = arr[arr.size()-1];
-    for(int i = arr.size()-1;i>0;i--){
-        arr[i]=arr[i-1];
+
+void searchMin(vector<int>&arr){
+    int low = 0 , high = arr.size()-1;
+    int ans = arr[0];
+    while(low<=high){
+        int mid = low + (high-low)/2;
+        if(arr[mid] >= arr[0]) // left hand side is sorted , go to right
+        {
+            low = mid+1;
+        }else{ //right hand side is sorted , go to left
+            ans = arr[mid];
+            high = mid - 1;
+        }
     }
-    arr[0]=temp;
-    for(int i=0;i<arr.size();i++){
-        cout<<arr[i]<<"\t";
-    }
-    cout<<"\n";
+    cout<<"Element:" << ans <<endl;
 }
+
 int main()
 {
-    vector<int> arr = {1,2,3,4,5,6};
-    rotate(arr);
-    rotate(arr);
-    rotate(arr);
+    vector<int> arr = {-1,1,2,3,4};
+    searchMin(arr);
     return 0;
 }
