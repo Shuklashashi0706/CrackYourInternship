@@ -1,3 +1,4 @@
+// to find the minimum in the rotated array
 #include <iostream>
 #include<vector>
 using namespace std;
