@@ -1,3 +1,4 @@
+//Checking if a string is pallindrome or not
 #include<iostream>
 #include<string>
 using namespace std;
