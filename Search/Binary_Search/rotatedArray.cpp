@@ -21,7 +21,7 @@ void searchMin(vector<int>&arr){
 
 int main()
 {
-    vector<int> arr = {-1,1,2,3,4};
+    vector<int> arr = {1,2,3,4};
     searchMin(arr);
     return 0;
 }
