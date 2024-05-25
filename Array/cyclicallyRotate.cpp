@@ -1,25 +1,33 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
+
+void rotate(int *arr, int len)
+{
+    int n = arr[0];
+    for (int i = 0; i < len - 1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+    arr[len - 1] = n;
+}
+
 int main()
 {
-    int arr[100];
-    int n;
-    cout<<"Enter"<<endl;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    int arr[] = {1, 2, 3, 4};
+    int k = 3;
+    int len = sizeof(arr) / sizeof(arr[0]);
+    while (k % len)
     {
-        cin >> arr[i];
+        rotate(arr, len);
+        k--;
     }
-    int temp = arr[n-1];
-    for(int i=n-2;i>=0;i--){
-        arr[i+1]=arr[i];
-    }
-    arr[0]=temp;
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 4; i++)
     {
         cout << arr[i] << "\t";
     }
+    cout << endl;
+
     return 0;
 }
