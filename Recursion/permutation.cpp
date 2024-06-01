@@ -3,34 +3,53 @@
 #include <algorithm>
 using namespace std;
 
-void permut(int arr[], vector<vector<int>> &ans, vector<int> &temp, vector<int> &visited)
+// void permut1(int arr[], vector<vector<int>> &ans, vector<int> &temp, vector<int> &visited)
+// {
+//     if (visited.size() == temp.size())
+//     {
+//         ans.push_back(temp);
+//         return;
+//     }
+//     for (int i = 0; i < visited.size(); i++)
+//     {
+//         if (visited[i] == 0)
+//         {
+//             visited[i] = 1;
+//             temp.push_back(arr[i]);
+//             permut1(arr, ans, temp, visited);
+//             visited[i] = 0;
+//             temp.pop_back();
+//         }
+//     }
+// }
+void permut(vector<int> arr, vector<vector<int>> &ans, int index)
 {
-    if (visited.size() == temp.size())
+    if (index == arr.size())
     {
-        ans.push_back(temp);
+        ans.push_back(arr);
         return;
     }
-    for (int i = 0; i < visited.size(); i++)
+    vector<int> used(21, 0);
+    for (int i = index; i < arr.size(); i++)
     {
-        if (visited[i] == 0)
+        if (used[arr[i] + 10] == 0)
         {
-            visited[i] = 1;
-            temp.push_back(arr[i]);
-            permut(arr, ans, temp, visited);
-            visited[i] = 0;
-            temp.pop_back();
+            swap(arr[i], arr[index]);
+            permut(arr, ans, index + 1);
+            swap(arr[i], arr[index]);
+            used[arr[i] + 10] = 1;
         }
     }
 }
 
 int main()
 {
-    int arr[] = {1, 2, 3};
-    vector<int> temp;
+    vector<int> arr = {1, 1, 3};
     vector<vector<int>> ans;
-    int len = sizeof(arr) / sizeof(arr[0]);
-    vector<int> visited(len, 0);
-    permut(arr, ans, temp, visited);
+    // int len = sizeof(arr) / sizeof(arr[0]);
+    // vector<int> visited(len, 0);
+    // permut1(arr, ans, temp, visited);
+    permut(arr, ans, 0);
     for (int i = 0; i < ans.size(); i++)
     {
         for (int j = 0; j < ans[0].size(); j++)
