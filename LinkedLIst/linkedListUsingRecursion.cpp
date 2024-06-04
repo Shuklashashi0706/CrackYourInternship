@@ -41,6 +41,18 @@ node *createLinkedList(int arr[], int len, int index, node *prev)
     return createLinkedList(arr, len, index + 1, temp);
 }
 
+node *deleteNode(node *curr, int x)
+{
+    if (x == 1)
+    {
+        node *temp = curr->next;
+        delete curr;
+        return temp;
+    }
+    curr->next = deleteNode(curr->next, x - 1);
+    return curr;
+}
+
 int main()
 {
     node *head;
@@ -88,38 +100,41 @@ int main()
     //     }
     // }
 
-    // deletion at position
-    if (head != NULL) // checking if linked list exists
-    {
-        if (head->next == NULL) // checking if linked list has only one node
-        {
-            node *temp = head;
-            head = NULL;
-            delete temp;
-        }
-        else
-        {
-            node *curr;
-            curr = head;
-            int pos = 4;
-            if (pos == 0)
-            {
-                head = curr->next;
-                delete curr;
-            }
-            else
-            {
-                node *prev = NULL;
-                while (pos--)
-                {
-                    prev = curr;
-                    curr = curr->next;
-                }
-                prev->next = curr->next;
-                delete curr;
-            }
-        }
-    }
+    // // deletion at position
+    // if (head != NULL) // checking if linked list exists
+    // {
+    //     if (head->next == NULL) // checking if linked list has only one node
+    //     {
+    //         node *temp = head;
+    //         head = NULL;
+    //         delete temp;
+    //     }
+    //     else
+    //     {
+    //         node *curr;
+    //         curr = head;
+    //         int pos = 4;
+    //         if (pos == 0)
+    //         {
+    //             head = curr->next;
+    //             delete curr;
+    //         }
+    //         else
+    //         {
+    //             node *prev = NULL;
+    //             while (pos--)
+    //             {
+    //                 prev = curr;
+    //                 curr = curr->next;
+    //             }
+    //             prev->next = curr->next;
+    //             delete curr;
+    //         }
+    //     }
+    // }
+    node *curr = head;
+    int x = 1;
+    head = deleteNode(curr, x);
 
     temp = head;
     while (temp)
