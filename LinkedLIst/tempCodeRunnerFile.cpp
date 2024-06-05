@@ -1,1 +1,6 @@
-1, 2, 3, 4, 5
+ // node *temp = head;
+    // while (temp)
+    // {
+    //     cout << temp->data << endl;
+    //     temp = temp->next;
+    // }
