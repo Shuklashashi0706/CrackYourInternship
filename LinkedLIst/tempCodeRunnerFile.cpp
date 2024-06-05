@@ -1,7 +1,1 @@
-    // // deletion at start
-    // if (head != NULL)
-    // {
-    //     temp = head;
-    //     head = temp->next;
-    //     delete temp;
-    // }
+1, 2, 3, 4, 5
