@@ -63,6 +63,15 @@ public:
             }
         }
     }
+    void show()
+    {
+        int start = front;
+        while (start <= rear)
+        {
+            cout << arr[start] << endl;
+            start++;
+        }
+    }
     int start()
     {
         if (isEmpty())
@@ -80,13 +89,11 @@ public:
 int main()
 {
     queue q(5);
-     q.push(1);
+    q.push(1);
     q.push(2);
     q.push(3);
     q.push(4);
     q.push(5);
-    q.pop();
-    q.push(6);
-    cout << q.start() << endl;
+    q.show();
     return 0;
 }
