@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 class node
@@ -53,6 +54,21 @@ void postorder(node *root)
     cout << root->data << " ";
 }
 
+void levelorder(node *root)
+{
+    queue<node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        cout << q.front()->data;
+        if (q.front()->left)
+            q.push(q.front()->left);
+        if (q.front()->right)
+            q.push(q.front()->right);
+        q.pop();
+    }
+}
+
 int main()
 {
     node *root = BinaryTree();
@@ -64,6 +80,9 @@ int main()
     cout << endl;
     cout << "Postorder:" << endl;
     postorder(root);
+    cout << endl;
+    cout << "Levelorder:" << endl;
+    levelorder(root);
     cout << endl;
     return 0;
 }
