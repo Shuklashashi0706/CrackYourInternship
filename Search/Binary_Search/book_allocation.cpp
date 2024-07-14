@@ -46,7 +46,7 @@ public:
 int main()
 {
     class Solution obj;
-    vector<int> nums{7,2,5,10,8};
+    vector<int> nums{10,20,30,40};
     int ans = obj.splitArray(nums,2);
     cout<<ans<<endl;
     return 0;
